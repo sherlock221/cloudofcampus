@@ -1,0 +1,113 @@
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width,user-scalable=no" name="viewport">
+<meta name="viewport"
+	content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>市区列表</title>
+<link rel="stylesheet" href="new_file.css">
+
+<script src="js/zepto.js"></script>
+<script src="js/zepto.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/selectArea.js"></script>
+
+</head>
+
+<body>
+	<div id='header' class="title_bar">
+        <img src="img/back.png" id="back">
+		<p class="title">西安<i class="tran tran-top"></i></p>
+	</div>
+
+    <div id="pagethree">
+        <div style="top: 0; height: 50px; width: 100%; text-align: center; line-height: 50px; background: #F8F8F8;"></div>
+    </div>
+
+	<div data-role="page" id="content" style="padding:10px;">
+            <h2 class="title-base">热门区域</h2>
+            <ul class="area">
+                <li>
+                    <a href="javascript:void(0)">长安区</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)">长安区</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)">长安区</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)">长安区</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)">长安区</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)">长安区</a>
+                </li>
+
+                <li>
+                    <a href="javascript:void(0)">长安区</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)">长安区</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)">长安区</a>
+                </li>
+
+                <li>
+                    <a href="javascript:void(0)">长安区</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)">长安区</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)">长安区</a>
+                </li>
+            </ul>
+
+	</div>
+
+     <!--底部弹出层-->
+     <div class="area-menu " >
+         <div class="list-header">高新区</div>
+         <ul>
+            <li>
+                <a href="javascript:void(0);">紫薇龙腾新世纪</a>
+            </li>
+             <li>
+                 <a href="javascript:void(0);">紫薇龙腾新世纪</a>
+             </li>
+             <li>
+                 <a href="javascript:void(0);">紫薇龙腾新世纪</a>
+             </li>
+         </ul>
+     </div>
+
+</body>
+</html>
+<script type="text/javascript" src="js/af.actionsheet.js"></script>
+<script type="text/javascript">
+
+    $("body").actionsheet(
+            [{
+                text: 'back',
+                cssClasses: 'red',
+                handler: function () {
+                    $.ui.goBack();
+                }
+            }, {
+                text: 'show alert 5',
+                cssClasses: 'blue',
+                handler: function () {
+                    alert("hi");
+                }
+            }, {
+                text: 'show alert 6',
+                cssClasses: '',
+                handler: function () {
+                    alert("goodbye");
+                }
+            }]
+    );
+</script>

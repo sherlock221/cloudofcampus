@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,user-scalable=no" name="viewport"> 
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>hello world</title>
+     <link rel="stylesheet" href="new_file.css">
+     
+<script src="zepto.js"></script>
+<script src="zepto.min.js"></script>
+<script type="text/javascript">
+
+   Zepto(function($){
+   	$.ajax({
+   		type:
+        'GET',
+        url:
+        'text2.json',
+      	 success: function(data){
+      	 	
+      	 	data1=eval(data);
+      	 	alert(typeof data1);
+      	 	for(i=0;i<1;i++){
+      	 	
+      	 	var bb =$("<div />",
+        {
+        class :'dingdanlist'
+        });
+     var aa=$('<div />',
+        {	
+        	text:data1.name[i],
+        	class:'dingdan'
+        });
+     var cc=$('<a />',{
+     	class:'fuhaowai'
+     });
+     var dd=$('<span />',{
+     	class:'fuhao',
+     	text:'+'
+     });
+     var ee=$('<input />',{
+     	type:'text',
+     	class:'shuliang',
+     	value:data1.much[i]
+     });
+     var ff =$('<span />',{
+     	class:'fuhao',
+     	text:'+'
+     });
+     var gg=$('<a />',{
+     	class:'fuhaowai'
+     });
+     var hh=$('<span />',{
+     	text : data1.much[i],
+     	class : 'num',
+     	css : {display: 'block',float:'right' }
+     })
+     
+     gg.append(ff);
+     cc.append(dd);
+        
+        bb.append(aa,cc,ee,gg,hh);
+        $('#pagethree').append(bb);
+        }
+      	 	
+        },
+         error:
+        function(xhr,type){
+        alert('Ajax error!')
+        alert(errorThrown);
+            alert(XMLHttpRequest.status);
+            alert(XMLHttpRequest.readyState);
+            alert(textStatus);
+        }
+       
+        
+   	});
+   	
+  	
+   	
+   });
+   
+</script>
+		<title></title>
+	</head>
+	<body>
+		
+	</body>
+</html>
