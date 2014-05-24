@@ -521,7 +521,7 @@ li.fooditem {
 .area > li >a{
     display: block;
     padding: 10px 15px;
-    background: #FFFFFF;
+
     margin-right: 10px;
     border: #DDDDDD solid 1px;
     margin-bottom: 10px;
@@ -529,6 +529,7 @@ li.fooditem {
 
 .area > li{
     float: left;
+    background: #FFFFFF;
 
 }
 
@@ -557,11 +558,23 @@ html, body {
 }
 
 /** 底部弹出层 **/
+
+.mask{
+    background-color: #000;
+    filter:alpha(opacity=50);/*IE*/
+    opacity:0.5 !important;/*FF*/
+    z-index:999;
+    position:absolute;/*IE6*/
+    width: 100%;
+    height: 100%;
+    top: 0%;
+    left: 0%;
+    display: none;
+}
 .area-menu{
 
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
-
     background: #ffffff;
     padding-left: 10px;
     transition : transform 1s ease-in-out;
@@ -571,8 +584,27 @@ html, body {
     left: 0;
     bottom: 0;
     right: 0;
-}
+    z-index: 1000;
+    display: none;
 
+}
+.city{
+    overflow: hidden;
+    background: #ffffff;
+    border: 1px solid #CCCCCC;
+    border-top: 0;
+    display: none;
+}
+.city >li{
+    float: left;
+}
+.city >li>a{
+    display: block;
+    padding: 10px 15px;
+}
+.area >li.active{
+    background: #F8F8F8;
+}
 .area-menu-slideUp{
     transform : translateY(-150px);
     -webkit-transform : translateY(-150px);

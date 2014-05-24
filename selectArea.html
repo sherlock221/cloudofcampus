@@ -16,7 +16,27 @@
 <body>
 	<div id='header' class="title_bar">
         <img src="img/back.png" id="back">
-		<p class="title">西安<i class="tran tran-top"></i></p>
+		<p class="title" id="select-title">西安<i class="tran tran-top"></i></p>
+
+        <ul class="city" id="city">
+            <li>
+                <a href="javascript:void(0);">
+                    杭州
+                </a>
+            </li>
+
+            <li>
+                <a href="javascript:void(0);">
+                    杭州
+                </a>
+            </li>
+
+            <li>
+                <a href="javascript:void(0);">
+                    杭州
+                </a>
+            </li>
+        </ul>
 	</div>
 
     <div id="pagethree">
@@ -25,51 +45,56 @@
 
 	<div data-role="page" id="content" style="padding:10px;">
             <h2 class="title-base">热门区域</h2>
-            <ul class="area">
-                <li>
+            <ul class="area radioBase">
+                <input type="hidden" value name="area" />
+                <li class="radioItem" value="长安区">
                     <a href="javascript:void(0)">长安区</a>
                 </li>
-                <li>
-                    <a href="javascript:void(0)">长安区</a>
-                </li>
-                <li>
-                    <a href="javascript:void(0)">长安区</a>
-                </li>
-                <li>
-                    <a href="javascript:void(0)">长安区</a>
-                </li>
-                <li>
-                    <a href="javascript:void(0)">长安区</a>
-                </li>
-                <li>
-                    <a href="javascript:void(0)">长安区</a>
+                <li class="radioItem" value="新城区">
+                    <a href="javascript:void(0)">新城区</a>
                 </li>
 
-                <li>
+                <li class="radioItem" value="莲湖区">
+                    <a href="javascript:void(0)">莲湖区</a>
+                </li>
+                <li class="radioItem" value="长安区">
                     <a href="javascript:void(0)">长安区</a>
                 </li>
-                <li>
-                    <a href="javascript:void(0)">长安区</a>
-                </li>
-                <li>
-                    <a href="javascript:void(0)">长安区</a>
+                <li class="radioItem" value="新城区">
+                    <a href="javascript:void(0)">新城区</a>
                 </li>
 
-                <li>
+                <li class="radioItem" value="莲湖区">
+                    <a href="javascript:void(0)">莲湖区</a>
+                </li>
+                <li class="radioItem" value="长安区">
                     <a href="javascript:void(0)">长安区</a>
                 </li>
-                <li>
+                <li class="radioItem" value="新城区">
+                    <a href="javascript:void(0)">新城区</a>
+                </li>
+
+                <li class="radioItem" value="莲湖区">
+                    <a href="javascript:void(0)">莲湖区</a>
+                </li>
+                <li class="radioItem" value="长安区">
                     <a href="javascript:void(0)">长安区</a>
                 </li>
-                <li>
-                    <a href="javascript:void(0)">长安区</a>
+                <li class="radioItem" value="新城区">
+                    <a href="javascript:void(0)">新城区</a>
                 </li>
+
+                <li class="radioItem" value="莲湖区">
+                    <a href="javascript:void(0)">莲湖区</a>
+                </li>
+
+
             </ul>
 
 	</div>
 
      <!--底部弹出层-->
-     <div class="area-menu " >
+     <div class="area-menu " id="area-menu">
          <div class="list-header">高新区</div>
          <ul>
             <li>
@@ -84,30 +109,69 @@
          </ul>
      </div>
 
+
+    <div id="mask" class="mask"></div>
 </body>
 </html>
-<script type="text/javascript" src="js/af.actionsheet.js"></script>
 <script type="text/javascript">
 
-    $("body").actionsheet(
-            [{
-                text: 'back',
-                cssClasses: 'red',
-                handler: function () {
-                    $.ui.goBack();
-                }
-            }, {
-                text: 'show alert 5',
-                cssClasses: 'blue',
-                handler: function () {
-                    alert("hi");
-                }
-            }, {
-                text: 'show alert 6',
-                cssClasses: '',
-                handler: function () {
-                    alert("goodbye");
-                }
-            }]
-    );
+    var mask = $("#mask");
+    var areaMenu = $("#area-menu");
+    var citySelect = $("#select-title");
+    var city  = $("#city");
+
+
+    citySelect.bind("click",function(e){
+        city.show();
+        $(document).one("click",function(){
+            city.hide();
+        });
+        e.stopPropagation();
+    });
+
+    // 全局模拟单选事件
+    $(document).on('click', ".radioBase .radioItem", function (e) {
+        var $this = $(this);
+        var hidden = $this.parent().find("input[type='hidden']");
+        // 移除全部状态
+        $this.parent().find(".radioItem").removeClass("active");
+        $this.addClass("active");
+        // 值给hidden元素
+        hidden.val($this.attr("value"));
+
+        //加载数据
+        loadArea($this.attr("value"));
+
+        //绑定一次关闭
+        $(document).one("click",function(){
+            toggle(false);
+        });
+        e.stopPropagation();
+    });
+
+    var loadArea = function(area){
+         //加载数据
+        var data = {};
+        $.get("http://www.flymeal.cn/android/cloudOfCampus!loadRestaurantByLatitudeAndLongitude.action?latitude=34.25238&longitude=108.989752",data,function(result){
+            toggle(true);
+        },function(err){
+            toggle(false);
+        });
+    };
+
+
+    var toggle = function(show){
+        if(show){
+            mask.show();
+            areaMenu.show();
+        }
+        else{
+            mask.hide();
+            areaMenu.hide();
+        }
+    }
+
+
+
+
 </script>
