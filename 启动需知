@@ -1,3 +1,7 @@
-file:///Users/gbdai/work/cloudofcampus/restaurantList.html?deviceId=1234567890&latitude=34.2523800&longitude=108.9897520
+启动方式
 
-需要添加后面的参数
+关闭chrome  cmd进入chrome安装目录 启动chrome.exe -disable-web-security
+
+file:xxxxx/restaurantList.html?deviceId=1234567890&latitude=34.2523800&longitude=108.9897520
+本地路径后面 添加参数来访问  ?deviceId=1234567890&latitude=34.2523800&longitude=108.9897520
+
